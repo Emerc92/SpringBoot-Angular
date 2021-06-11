@@ -60,10 +60,13 @@ public class AuthController {
 	public ResponseEntity<?> newUser(@Valid @RequestBody Newuser newUser, @Valid BindingResult bindingResult){
 
 		if(bindingResult.hasErrors()) {
-			return new ResponseEntity(new MessageEntity("campi errati"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity(new MessageEntity("campi o mail errati"), HttpStatus.BAD_REQUEST);
 		}
 		if(userService.existsbyUserName(newUser.getUserName())) {
 			return new ResponseEntity(new MessageEntity("l'username esiste già"), HttpStatus.BAD_REQUEST);
+		}
+		if(userService.existsbyEmail(newUser.getEmail())) {
+			return new ResponseEntity(new MessageEntity("l'email inserita esiste già"), HttpStatus.BAD_REQUEST);
 		}
 		User user = new User(newUser.getName(), newUser.getUserName(), passwordEncoder.encode(newUser.getPassword()));
 		Set<Role> roles = new HashSet<>();

@@ -38,7 +38,7 @@ public class CityController {
 		return new ResponseEntity(city, HttpStatus.OK);
 	}
 	
-	@GetMapping("detail/{name}")
+	@GetMapping("detailname/{name}")
 	public ResponseEntity<List<CityEntity>> getByName(@PathVariable("name") String name){
 		if(!cityService.existsByName(name)) {
 			return  new ResponseEntity(new Message("non esiste"), HttpStatus.BAD_REQUEST);

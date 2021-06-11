@@ -26,6 +26,9 @@ public class UserAdmin implements UserDetails {
 	@NotNull
 	private String password;
 	
+	@NotNull
+	private String email;
+	
 	private Collection<? extends GrantedAuthority> authorities;
 
 	@Override
@@ -34,11 +37,12 @@ public class UserAdmin implements UserDetails {
 	}
 	
 
-	public UserAdmin(String name, String userName, String password,
+	public UserAdmin(String name, String userName, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
 		super();
 		this.name = name;
 		this.userName = userName;
+		this.email = email;
 		this.password = password;
 		this.authorities = authorities;
 	}
@@ -46,7 +50,7 @@ public class UserAdmin implements UserDetails {
 	public static UserAdmin build(User user) {
 		List<GrantedAuthority> auth = user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getRoleName().name())).collect(Collectors.toList());
 	
-		return new UserAdmin(user.getName(), user.getUserName(), user.getPassword(), auth);
+		return new UserAdmin(user.getName(), user.getUserName(), user.getEmail(), user.getPassword(), auth);
 	}
 
 	@Override
@@ -58,7 +62,7 @@ public class UserAdmin implements UserDetails {
 	public String getUsername() {
 		return userName;
 	}
-
+	
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
@@ -87,6 +91,9 @@ public class UserAdmin implements UserDetails {
 		this.name = name;
 	}
 	
-	
-	
+	public String getEmail() {
+		return userName;
+	}
+
+		
 }

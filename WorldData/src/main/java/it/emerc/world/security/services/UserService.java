@@ -9,8 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import it.emerc.world.security.entities.User;
 import it.emerc.world.security.repositories.UserRepository;
 
-
-
 @Service
 @Transactional
 public class UserService {
@@ -24,6 +22,10 @@ public class UserService {
 	
 	public boolean existsbyUserName(String userName) {
 		return userRepo.existsByUserName(userName);
+	}
+	
+	public boolean existsbyEmail(String email) {
+		return userRepo.existsByEmail(email);
 	}
 	
 	public void save(User user) {
