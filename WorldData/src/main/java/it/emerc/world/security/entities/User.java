@@ -29,12 +29,18 @@ public class User {
 	@NotNull
 	private String userName;
 	
+	@NotNull
+	@Column (unique = true)
+	private String email;
+	
 	@Column(name = "password")
 	@NotNull
 	private String password;
 	
 	@ManyToMany (fetch = FetchType.EAGER)
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "id_role"))
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+		inverseJoinColumns = @JoinColumn(name = "id_role"))
+	
 	private Set<Role> roles = new HashSet<>();
 
 	public User() {
@@ -66,6 +72,14 @@ public class User {
 
 	public String getUserName() {
 		return userName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public void setUserName(String userName) {
