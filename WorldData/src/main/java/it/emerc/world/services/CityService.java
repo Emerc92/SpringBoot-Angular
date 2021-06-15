@@ -3,11 +3,11 @@ package it.emerc.world.services;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
 
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.emerc.world.entities.CityEntity;
 import it.emerc.world.repositories.CityRepo;
@@ -27,7 +27,7 @@ public class CityService {
 		}
 	
 	public boolean existsByName(String name){
-		LOGGER.info("exists by id is = " + cityRepo.existsByName(name));
+		LOGGER.info("exists by name is = " + cityRepo.existsByName(name));
 		return cityRepo.existsByName(name);	
 		}
 	
