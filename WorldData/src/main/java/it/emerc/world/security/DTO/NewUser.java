@@ -5,7 +5,7 @@ import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
 
-public class Newuser {
+public class NewUser {
 	@NotBlank
 	private String name;
 	
@@ -21,19 +21,19 @@ public class Newuser {
 	private Set<String> roles = new HashSet<>();
 	
 	
-	public final String getName() {
+	public String getName() {
 		return name;
 	}
 
-	public final void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public final String getUserName() {
+	public String getUserName() {
 		return userName;
 	}
 
-	public final void setUserName(String userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 

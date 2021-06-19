@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import it.emerc.world.entities.MessageEntity;
 import it.emerc.world.security.DTO.JwtDto;
 import it.emerc.world.security.DTO.LoginUser;
-import it.emerc.world.security.DTO.Newuser;
+import it.emerc.world.security.DTO.NewUser;
 import it.emerc.world.security.JWT.JWTProvider;
 import it.emerc.world.security.entities.Role;
 import it.emerc.world.security.entities.User;
@@ -57,18 +56,18 @@ public class AuthController {
 	
 	//@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/newuser")
-	public ResponseEntity<?> newUser(@Valid @RequestBody Newuser newUser, @Valid BindingResult bindingResult){
+	public ResponseEntity<?> newUser(@Valid @RequestBody NewUser newUser, BindingResult bindingResult){
 
 		if(bindingResult.hasErrors()) {
 			return new ResponseEntity(new MessageEntity("campi o mail errati"), HttpStatus.BAD_REQUEST);
 		}
-		if(userService.existsbyUserName(newUser.getUserName())) {
+		if(userService.existsByUserName(newUser.getUserName())) {
 			return new ResponseEntity(new MessageEntity("l'username esiste già"), HttpStatus.BAD_REQUEST);
 		}
-		if(userService.existsbyEmail(newUser.getEmail())) {
+		if(userService.existsByEmail(newUser.getEmail())) {
 			return new ResponseEntity(new MessageEntity("l'email inserita esiste già"), HttpStatus.BAD_REQUEST);
 		}
-		User user = new User(newUser.getName(), newUser.getUserName(), passwordEncoder.encode(newUser.getPassword()));
+		User user = new User(newUser.getName(), newUser.getUserName(),  newUser.getEmail(), passwordEncoder.encode(newUser.getPassword()));
 		Set<Role> roles = new HashSet<>();
 		roles.add(roleService.getByRolName(RolName.ROLE_USER).get());
 		if(newUser.getRoles().contains("admin")){
@@ -96,9 +95,16 @@ public class AuthController {
 	}
 	
 	
-	@PreAuthorize("hasRole('ADMIN')")
-	@PostMapping("/deleteuser")
-	public ResponseEntity<?> deleteUser(@Valid @RequestBody LoginUser loginUser, BindingResult bindingResult){
+	//@PreAuthorize("hasRole('ADMIN')")
+	@PostMapping("/deleteuser{id}")
+	public ResponseEntity<?> deleteUser(@Valid @RequestBody LoginUser user,  @Valid BindingResult bindingResult){
+		
+		if(bindingResult.hasErrors()) {
+			return new ResponseEntity(new MessageEntity("user not exist"), HttpStatus.BAD_REQUEST);
+		}
+		if(!userService.existsByUserName(user.getUserName())) {
+			return new ResponseEntity(new MessageEntity("user not exist"), HttpStatus.NOT_FOUND);
+		}
 		return new ResponseEntity(new MessageEntity("user eliminato"), HttpStatus.OK);
 	}
 }

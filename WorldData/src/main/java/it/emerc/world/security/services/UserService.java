@@ -19,17 +19,23 @@ public class UserService {
 	public Optional<User> getByUserName(String userName){
 		return userRepo.findByUserName(userName);
 	}
+	public Optional<User> existsById(long id) {
+		return userRepo.findById(id);
+	}
 	
-	public boolean existsbyUserName(String userName) {
+	public boolean existsByUserName(String userName) {
 		return userRepo.existsByUserName(userName);
 	}
 	
-	public boolean existsbyEmail(String email) {
+	public boolean existsByEmail(String email) {
 		return userRepo.existsByEmail(email);
 	}
 	
 	public void save(User user) {
 		userRepo.save(user);
+	}
+	public void delete(User user) {
+		userRepo.delete(user);
 	}
 	
 }

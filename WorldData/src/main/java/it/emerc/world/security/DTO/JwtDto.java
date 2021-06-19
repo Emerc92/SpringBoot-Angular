@@ -18,35 +18,35 @@ public class JwtDto {
 		this.authorities = authorities;
 	}
 
-	public final String getToken() {
+	public String getToken() {
 		return token;
 	}
 
-	public final void setToken(String token) {
+	public void setToken(String token) {
 		this.token = token;
 	}
 
-	public final String getBearer() {
+	public String getBearer() {
 		return bearer;
 	}
 
-	public final void setBearer(String bearer) {
+	public void setBearer(String bearer) {
 		this.bearer = bearer;
 	}
 
-	public final String getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public final void setUser(String user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
-	public final Collection<? extends GrantedAuthority> getAuthorities() {
+	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
 	}
 
-	public final void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
 		this.authorities = authorities;
 	}
 	
