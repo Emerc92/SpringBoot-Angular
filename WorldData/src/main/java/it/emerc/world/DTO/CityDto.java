@@ -1,4 +1,4 @@
-package it.emerc.world.security.DTO;
+package it.emerc.world.DTO;
 
 import javax.validation.constraints.NotBlank;
 

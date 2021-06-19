@@ -12,6 +12,8 @@ import it.emerc.world.security.entities.User;
 public interface UserRepository extends JpaRepository <User, Long>{
 
 	Optional<User> findByUserName(String userName);
+	Optional<User> findById(long id);
 	boolean existsByUserName(String userName);
 	boolean existsByEmail(String email);
+	
 }

@@ -38,20 +38,24 @@ public class User {
 	private String password;
 	
 	@ManyToMany (fetch = FetchType.EAGER)
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
-		inverseJoinColumns = @JoinColumn(name = "id_role"))
-	
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "id_role"))
 	private Set<Role> roles = new HashSet<>();
 
 	public User() {
 		super();
 	}
 
-	public User(@NotNull String name, @NotNull String userName,@NotNull String password) {
+	public User(@NotNull String name, @NotNull String userName, @NotNull String email,@NotNull String password) {
 		super();
 		this.name = name;
 		this.userName = userName;
+		this.email = email;
 		this.password = password;
+	}
+	public User(@NotNull String name, @NotNull String userName) {
+		super();
+		this.name = name;
+		this.userName = userName;
 	}
 
 	public long getId() {

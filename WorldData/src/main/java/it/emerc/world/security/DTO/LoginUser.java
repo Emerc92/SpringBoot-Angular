@@ -10,19 +10,19 @@ public class LoginUser {
 	@NotBlank
 	private String password;
 	
-	public final String getUserName() {
+	public String getUserName() {
 		return userName;
 	}
 
-	public final void setUserName(String userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
-	public final String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public final void setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 }

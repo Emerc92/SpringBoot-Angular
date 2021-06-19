@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.emerc.world.DTO.Message;
 import it.emerc.world.entities.CityEntity;
-import it.emerc.world.security.DTO.Message;
 import it.emerc.world.services.CityService;
 
 @RestController

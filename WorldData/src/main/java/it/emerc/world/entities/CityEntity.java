@@ -16,7 +16,7 @@ public class CityEntity implements Serializable{
 	@Column(name ="Name")
 	private String name;
 	
-	@Column(name ="CountryCode")
+	@Column(name ="Countrycode")
 	private String countryCode;
 	
 	@Column(name ="District")
@@ -27,9 +27,6 @@ public class CityEntity implements Serializable{
 	
 	@Column(name ="code")
 	private String code;
-	
-	@Column(name ="country_code2")
-	private String country_code2;
 	
 	@Column(name ="continent")
 	private String continent;
@@ -82,15 +79,6 @@ public class CityEntity implements Serializable{
 	public void setCode(String code) {
 		this.code = code;
 	}
-
-	public String getCountry_code2() {
-		return country_code2;
-	}
-
-	public void setCountry_code2(String country_code2) {
-		this.country_code2 = country_code2;
-	}
-
 	public String getContinent() {
 		return continent;
 	}
@@ -115,9 +103,6 @@ public class CityEntity implements Serializable{
 		builder.append(population);
 		builder.append(", code=");
 		builder.append(code);
-		builder.append(", country_code2=");
-		builder.append(country_code2);
-		builder.append(", continent=");
 		builder.append(continent);
 		builder.append("]");
 		return builder.toString();
