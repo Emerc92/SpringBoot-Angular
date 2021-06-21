@@ -1,5 +1,0 @@
-package it.wibs.eplastic.bindcommerceIntegration.api.obj.documents;
-
-public class Params {
-
-}

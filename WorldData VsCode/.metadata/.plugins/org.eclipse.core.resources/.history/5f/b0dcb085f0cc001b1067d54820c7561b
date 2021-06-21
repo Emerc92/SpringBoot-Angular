@@ -1,5 +1,0 @@
-package it.wibs.eplastic.repository;
-
-public interface CommissionsRepo {
-
-}

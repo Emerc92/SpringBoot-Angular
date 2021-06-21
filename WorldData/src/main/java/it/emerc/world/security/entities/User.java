@@ -37,7 +37,7 @@ public class User {
 	@NotNull
 	private String password;
 	
-	@ManyToMany (fetch = FetchType.EAGER)
+	@ManyToMany (fetch = FetchType.EAGER)//indexare l'user per alegerire la ricerca solo per l'user specifico
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "id_role"))
 	private Set<Role> roles = new HashSet<>();
 

@@ -3,6 +3,7 @@ package it.emerc.world.security.DTO;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 public class NewUser {
@@ -15,7 +16,7 @@ public class NewUser {
 	@NotBlank
 	private String password;
 	
-	@NotBlank
+	@Email
 	private String email;
 	
 	private Set<String> roles = new HashSet<>();
@@ -46,15 +47,15 @@ public class NewUser {
 		this.email = email;
 	}
 
-	public final String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public final void setPassword(String password) {
+	public  void setPassword(String password) {
 		this.password = password;
 	}
 
-	public final Set<String> getRoles() {
+	public Set<String> getRoles() {
 		return roles;
 	}
 
