@@ -25,7 +25,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
 
 	
 	@Autowired
-	UserDetailsServiceImp service;
+	UserDetailsServiceImp userDetailService;
 	
 	@Autowired
 	JWTEntryPoint entryPoint;
@@ -43,7 +43,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(service).passwordEncoder(passwordEncoder());
+		auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
 	}
 	
 	@Bean

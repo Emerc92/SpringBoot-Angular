@@ -21,7 +21,7 @@ public class JWTEntryPoint implements AuthenticationEntryPoint{
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse res,
 			AuthenticationException authException) throws IOException, ServletException {
-		LOGGER.error("fail in metod commence");// per prod non serve
+		LOGGER.error("fail in metod commence  ");// per prod non serve
 		res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Non autorizzato");
 	}
 
