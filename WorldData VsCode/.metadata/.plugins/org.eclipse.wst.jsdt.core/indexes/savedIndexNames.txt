@@ -1,7 +1,0 @@
-INDEX VERSION 1.4+C:\Users\emiliano.mercado\Eplastic Eclipse\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2607632343.index
-2543740438.index
-1195353881.index
-1285818228.index
-3963514141.index
-2515538413.index

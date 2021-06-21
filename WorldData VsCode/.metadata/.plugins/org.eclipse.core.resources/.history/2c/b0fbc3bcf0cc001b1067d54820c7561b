@@ -1,9 +1,0 @@
-package it.wibs.eplastic.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import it.wibs.eplastic.entities.CommissionsEntity;
-
-public interface CommissionsRepo extends JpaRepository<CommissionsEntity, Long>{
-
-}

@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -54,12 +55,12 @@ public class AuthController {
 	JWTProvider jwtPovider;
 	
 	
-	//@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/newuser")
 	public ResponseEntity<?> newUser(@Valid @RequestBody NewUser newUser, BindingResult bindingResult){
 
 		if(bindingResult.hasErrors()) {
-			return new ResponseEntity(new MessageEntity("campi o mail errati"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity(new MessageEntity("campi o mail non valido"), HttpStatus.BAD_REQUEST);
 		}
 		if(userService.existsByUserName(newUser.getUserName())) {
 			return new ResponseEntity(new MessageEntity("l'username esiste già"), HttpStatus.BAD_REQUEST);
@@ -80,7 +81,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@Valid @RequestBody LoginUser loginUser, @Valid BindingResult bindingResult){
+	public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUser loginUser, BindingResult bindingResult){
 		
 		if(bindingResult.hasErrors()) {
 			return new ResponseEntity(new MessageEntity("username o password errate"), HttpStatus.BAD_REQUEST);

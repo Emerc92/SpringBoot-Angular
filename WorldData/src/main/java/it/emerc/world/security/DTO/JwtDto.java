@@ -12,7 +12,6 @@ public class JwtDto {
 	private Collection<? extends GrantedAuthority> authorities;
 	
 	public JwtDto(String token, String user, Collection<? extends GrantedAuthority> authorities) {
-		super();
 		this.token = token;
 		this.user = user;
 		this.authorities = authorities;
