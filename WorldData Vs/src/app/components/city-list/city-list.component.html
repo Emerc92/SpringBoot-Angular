@@ -1,0 +1,44 @@
+<div class="container text-center">
+ 
+    <div fxLayout fxLayoutAlign="center center">
+        <mat-form-field fxFlex="40%">
+          <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Cerca">
+        </mat-form-field>
+      </div>
+    <h2>Cities List</h2>
+    <mat-table [dataSource]=" dataSource" matSort class="mat-elevation-z8">
+       
+        <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+
+        <ng-container matColumnDef="id" >
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="countryCode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Country Code </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.countryCode}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="district">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> District </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.district}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="population">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Population </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.population}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="code">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Code </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.code}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="country code2">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> country code2 </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.countryCode2}}</mat-cell>
+        </ng-container>
+    </mat-table>
+    <mat-paginator  [pageSize]="5" [pageSizeOptions]="[5,10,20, dataSource.data.length ]" [disabled]="dataSource.data.length === 0" showFirstLastButtons> </mat-paginator><!-- -->
+</div>

@@ -1,0 +1,9 @@
+.mat-sort{
+    width: 100%;
+}
+mat-table {
+    overflow: initial;
+  }
+mat-header-cell.mat-sort-header-sorted {
+    color: rgb(219, 13, 13);
+  }
