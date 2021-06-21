@@ -1,0 +1,47 @@
+1623330160532	Rename package 'it.eplastic.amazonintegration.api.business'
+1623330171319	Rename package 'it.eplastic.amazonintegration.api.call'
+1623330187650	Rename package 'it.eplastic.amazonintegration.api.obj.error'
+1623330205113	Rename package 'it.eplastic.amazonintegration.api.obj.feeds'
+1623330217811	Rename package 'it.eplastic.amazonintegration.api.obj.generic'
+1623330231740	Rename package 'it.eplastic.amazonintegration.api.obj.orders'
+1623330392673	Rename package 'it.eplastic.bindcommerceIntegration.api.obj.orders'
+1623330468281	Rename type 'Order'
+1623331870776	Delete element
+1623332115209	Rename type 'PointsGranted'
+1623332561957	Rename type 'ListOrderItemsResponse'
+1623332860513	Rename type 'ShippingAddress'
+1623333117716	Delete element
+1623333122404	Delete element
+1623333131112	Delete element
+1623333139161	Delete element
+1623333142135	Delete element
+1623333155702	Delete element
+1623333157752	Delete element
+1623333159816	Delete element
+1623333240624	Delete element
+1623333242603	Delete element
+1623333246754	Delete element
+1623333268990	Rename type 'PaymentMethodDetails'
+1623333884618	Rename type 'ProductInfo'
+1623333989745	Rename type 'TaxClassification'
+1623334288082	Rename type 'PromotionIds'
+1623334475742	Rename type 'TaxCollection'
+1623335395659	Delete element
+1623335757456	Rename type 'ProductCategories'
+1623337593217	Delete element
+1623337608717	Delete element
+1623409141780	Rename type 'PaymentExecutionDetailEntity'
+1623414755671	Rename package 'it.eplastic.bindcommerceIntegration.api.obj.documents'
+1623414772009	Rename package 'it.eplastic.bindcommerceIntegration.api.obj.error'
+1623414886265	Rename package 'it.eplastic.bindcommerceIntegration.api.business'
+1623414898038	Rename package 'it.eplastic.bindcommerceIntegration.api.call'
+1623414995883	Rename package 'it.wibs.eplastic.model'
+1623415040152	Rename type 'PaymentExecutionDetailRepo'
+1623422841008	Delete element
+1623424082195	Delete element
+1623424335040	Rename type 'DeliveryAddress'
+1623424429361	Rename type 'ShippingAddressEntity'
+1623424484332	Rename local variable 'ord'
+1623424511829	Rename local variable 'ordEnt'
+1623424703335	Rename type 'Commitions'
+1623425843403	Rename field 'node_channel'

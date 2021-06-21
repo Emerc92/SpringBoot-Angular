@@ -1,0 +1,72 @@
+package it.wibs.eplastic.bindcommerceIntegration.api.obj.documents;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class DocumentsResponse {
+	
+	@JsonProperty("Documents")
+	private Documents documents;
+	
+	@JsonProperty
+	private String errorCode;
+	
+	@JsonProperty
+	private String errorDescription;
+	
+	@JsonProperty
+	private Documents orderList;
+
+	public Documents getDocuments() {
+		return documents;
+	}
+
+	public void setDocuments(Documents documents) {
+		this.documents = documents;
+	}
+
+	public String getErrorCode() {
+		return errorCode;
+	}
+
+	public void setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
+	}
+
+	public String getErrorDescription() {
+		return errorDescription;
+	}
+
+	public void setErrorDescription(String errorDescription) {
+		this.errorDescription = errorDescription;
+	}
+
+	public Documents getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(Documents orderList) {
+		this.orderList = orderList;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("DocumentsResponse [documents=");
+		builder.append(documents);
+		builder.append(", errorCode=");
+		builder.append(errorCode);
+		builder.append(", errorDescription=");
+		builder.append(errorDescription);
+		builder.append(", orderList=");
+		builder.append(orderList);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+
+	
+}

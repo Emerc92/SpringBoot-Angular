@@ -1,0 +1,34 @@
+1623657492891	Rename field 'postCode'
+1623661267547	Rename type 'DefaultShipFromLocationAddressRepo'
+1623661419284	Rename type 'ShippingAddressRepo'
+1623661849107	Rename type 'CommitionsEntity'
+1623662516386	Rename type 'DefaultShipFromLocationAddressService'
+1623663553413	Delete element
+1623663597159	Rename type 'PaymentExecutionDetailService'
+1623664591581	Rename field 'defService'
+1623675506407	Rename field 'lenght'
+1623675638747	Rename method 'getHeigth'
+1623675653116	Rename field 'heigth'
+1623675668277	Rename method 'setHeigth'
+1623678637432	Rename field 'listDocument'
+1623678655836	Rename method 'getListDocument'
+1623678679978	Rename method 'setListDocument'
+1623743330546	Rename method 'callListOrder'
+1623748086744	Rename field 'paymenStatus'
+1623748145544	Rename field 'paydTime'
+1623748351185	Rename field 'vatAmmount'
+1623753488040	Move 'ordersList.xml' to 'static'
+1623755287534	Move 'ordersList.xml' to 'resources'
+1623851315017	Rename local variable 'targetOrders'
+1623856203014	Move 'ordersList.xml' to 'static'
+1623859240303	Delete element
+1623922977050	Delete element
+1623924339133	Delete element
+1623924343291	Delete element
+1623927787860	Rename resource 'ordersList.xml'
+1623933010763	Rename resource 'ordersList.XML'
+1623936867925	Rename field 'documentsList'
+1623936886079	Rename method 'getDocumentsList'
+1623936912682	Rename method 'setDocumentsList'
+1624000962462	Delete element
+1624007683652	Rename local variable 'orders'

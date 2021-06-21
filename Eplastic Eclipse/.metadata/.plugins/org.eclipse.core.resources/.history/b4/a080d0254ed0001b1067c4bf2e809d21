@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Documents>
+	<Document>
+		<General>
+			<DocumentType>C</DocumentType>
+			<bindCommerceNumber>15918</bindCommerceNumber>
+			<Number>89568</Number>
+			<Node>eBay superseller</Node>
+			<NodeID>55</NodeID>
+			<Technology>Marketplace eBay</Technology>
+			<Market></Market>
+			<Date>2018-03-22 17:34:07</Date>
+			<LastUpdate>2021-03-22 17:34:07</LastUpdate>
+			<StatebindID>1</StatebindID>
+			<StateCode>C</StateCode>
+			<StateName>Completed</StateName>
+		</General>
+		<Customer>
+			<Code>14833</Code>
+			<Name>Daniele</Name>
+			<Surname>Beccarelli </Surname>
+			<Company></Company>
+			<Address>Via delle Rosine 70 </Address>
+			<Postcode>00121</Postcode>
+			<City>Lido di Ostia</City>
+			<Province>RM</Province>
+			<CountryCode>IT</CountryCode>
+			<VatCode></VatCode>
+			<FiscalCode></FiscalCode>
+			<Phone>32871800000</Phone>
+			<MobPhone></MobPhone>
+			<Email>yourname@gmail.com</Email>
+		</Customer>
+		<Delivery>
+			<Name>Daniele</Name>
+			<Surname>Beccarelli </Surname>
+			<Company></Company>
+			<Address>Via delle Rosine 70 </Address>
+			<Postcode>00121</Postcode>
+			<City>Lido di Ostia</City>
+			<Province>RM</Province>
+			<CountryCode>IT</CountryCode>
+			<Phone>32871800000</Phone>
+			<MobPhone></MobPhone>
+			<Email>yourname@gmail.com</Email>
+		</Delivery>
+		<Payments>
+			<PaymentName>PayPal</PaymentName>
+			<PaymentCode>PP</PaymentCode>
+			<PaymentTotal>0.00</PaymentTotal>
+			<PaymentStatus>Complete</PaymentStatus>
+			<PaidTime>2018-03-22 17:34:31</PaidTime>
+		</Payments>
+		<Rows>
+			<Row>
+				<bindID>17027</bindID>
+				<Code>3961824</Code>
+				<Barcode>8000072058222</Barcode>
+				<Description>EURO 3 PLAST Sottovaso medea cm24 verde Giardino Arredo
+					da esterno</Description>
+				<Qty>4</Qty>
+				<ProductDimensions>
+					<Weight>0.05</Weight>
+					<WeightUom>Kg</WeightUom>
+					<WeightVolume>0</WeightVolume>
+					<LwhUom></LwhUom>
+					<Length>24</Length>
+					<Width>24</Width>
+					<Height>4</Height>
+				</ProductDimensions>
+				<ProductCategories>
+					<Category>GIARDINO</Category>
+				</ProductCategories>
+				<Picture>https://webserver.superseller.com/bindcommerce/product/big/17/a5f5_cb73a_130572.jpeg
+				</Picture>
+				<Supplier>Rossi S.p.A.</Supplier>
+				<SupplierByRepricing>Rossi S.p.A api name</SupplierByRepricing>
+				<SupplierByRepricingCost>1.23000</SupplierByRepricingCost>
+				<SupplierPrice>0.58</SupplierPrice>
+				<MPN>3961824</MPN>
+				<PriceVatExcluded>1.12</PriceVatExcluded>
+				<Price>1.37000</Price>
+				<Discounts>0.00000</Discounts>
+				<VatRate>22</VatRate>
+				<TotalVatExcluded>4.49</TotalVatExcluded>
+				<Total>5.48000</Total>
+				<TotalDiscounted>5.48000</TotalDiscounted>
+				<Currency>EUR</Currency>
+				<Params>
+					<Param>
+						<Name>Param name</Name>
+						<Value>Param value example</Value>
+					</Param>
+				</Params>
+
+			</Row>
+			<Row>
+				<bindID>17045</bindID>
+				<Code>3961824</Code>
+				<Barcode>8000072058222</Barcode>
+				<Description>EURO 3 PLAST Sottovaso medea cm24 verde Giardino Arredo
+					da esterno</Description>
+				<Qty>4</Qty>
+				<ProductDimensions>
+					<Weight>0.05</Weight>
+					<WeightUom>Kg</WeightUom>
+					<WeightVolume>0</WeightVolume>
+					<LwhUom></LwhUom>
+					<Length>24</Length>
+					<Width>24</Width>
+					<Height>4</Height>
+				</ProductDimensions>
+				<ProductCategories>
+					<Category>GIARDINO</Category>
+				</ProductCategories>
+				<Picture>https://webserver.superseller.com/bindcommerce/product/big/17/a5f5_cb73a_130572.jpeg
+				</Picture>
+				<Supplier>Rossi S.p.A.</Supplier>
+				<SupplierByRepricing>Rossi S.p.A api name</SupplierByRepricing>
+				<SupplierByRepricingCost>1.23000</SupplierByRepricingCost>
+				<SupplierPrice>0.58</SupplierPrice>
+				<MPN>3961824</MPN>
+				<PriceVatExcluded>1.12</PriceVatExcluded>
+				<Price>1.37000</Price>
+				<Discounts>0.00000</Discounts>
+				<VatRate>22</VatRate>
+				<TotalVatExcluded>4.49</TotalVatExcluded>
+				<Total>5.48000</Total>
+				<TotalDiscounted>5.48000</TotalDiscounted>
+				<Currency>EUR</Currency>
+				<Params>
+					<Param>
+						<Name>Param name</Name>
+						<Value>Param value example</Value>
+					</Param>
+				</Params>
+			</Row>
+			<Row>
+				<bindID>17037</bindID>
+				<Code>3961898</Code>
+				<Barcode>8000072058224</Barcode>
+				<Description>CONTENITORE UMIDO</Description>
+				<Qty>2</Qty>
+				<ProductDimensions>
+					<Weight>0.05</Weight>
+					<WeightUom>Kg</WeightUom>
+					<WeightVolume>0</WeightVolume>
+					<LwhUom></LwhUom>
+					<Length>24</Length>
+					<Width>24</Width>
+					<Height>4</Height>
+				</ProductDimensions>
+				<ProductCategories>
+					<Category>CASA</Category>
+				</ProductCategories>
+				<Picture>https://webserver.superseller.com/bindcommerce/product/big/17/a5f5_cb73a_130572.jpeg
+				</Picture>
+				<Supplier>Rossi S.p.A.</Supplier>
+				<SupplierByRepricing>Rossi S.p.A api name</SupplierByRepricing>
+				<SupplierByRepricingCost>1.23000</SupplierByRepricingCost>
+				<SupplierPrice>0.58</SupplierPrice>
+				<MPN>3961824</MPN>
+				<PriceVatExcluded>1.12</PriceVatExcluded>
+				<Price>5.00</Price>
+				<Discounts>0.00000</Discounts>
+				<VatRate>22</VatRate>
+				<TotalVatExcluded>4.49</TotalVatExcluded>
+				<Total>10</Total>
+				<TotalDiscounted></TotalDiscounted>
+				<Currency>EUR</Currency>
+				<Params>
+					<Param>
+						<Name>Param name</Name>
+						<Value>Param value example</Value>
+					</Param>
+				</Params>
+
+			</Row>
+		</Rows>
+		<Amounts>
+			<TotalWithoutTax>4.49</TotalWithoutTax>
+			<VatAmount>0.99</VatAmount>
+			<Total>15.48</Total>
+			<Currency>EUR</Currency>
+			<ShippingCost>6.49</ShippingCost>
+			<ShippingCostWithoutTax>6.49</ShippingCostWithoutTax>
+			<ShippingTax>0</ShippingTax>
+			<InternalComment></InternalComment>
+			<SellerNote></SellerNote>
+			<CouponDiscount>0.00</CouponDiscount>
+			<CouponCode></CouponCode>
+			<DiscountToCart></DiscountToCart>
+		</Amounts>
+		<Commission>
+			<PayPalCommission>0.61</PayPalCommission>
+			<PayPalTransactionID></PayPalTransactionID>
+			<eBayCommission>0.48</eBayCommission>
+			<eBayAccount>suo_account</eBayAccount>
+			<eBayAdjustmentAmount>0.00</eBayAdjustmentAmount>
+			<eBayAmountSaved>13.47</eBayAmountSaved>
+		</Commission>
+		<Shipping>
+			<Carrier>Altro corriere 3-5 giorni</Carrier>
+			<TrackingNumber>13547684638468</TrackingNumber>
+			<TransportedWeight>0.2</TransportedWeight>
+			<ShippedTime>0000-00-00 00:00:00</ShippedTime>
+		</Shipping>
+	</Document>
+</Documents>

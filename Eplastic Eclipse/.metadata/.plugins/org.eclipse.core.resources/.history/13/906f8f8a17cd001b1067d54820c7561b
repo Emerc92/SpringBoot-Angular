@@ -1,0 +1,33 @@
+package it.wibs.eplastic.bindcommerceIntegration.api.obj.documents;
+
+import java.io.Serializable;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Documents implements Serializable {
+
+	@JsonProperty("Documents")
+	private List<Document> documentList;
+	
+	
+	public List<Document> getListDocument() {
+		return documentList;
+	}
+
+	public void setListDocument(List<Document> listDocument) {
+		this.documentList = listDocument;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Documents [documentList=");
+		builder.append(documentList);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+}

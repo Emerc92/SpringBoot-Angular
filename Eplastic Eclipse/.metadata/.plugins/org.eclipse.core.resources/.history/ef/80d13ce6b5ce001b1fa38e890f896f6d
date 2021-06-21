@@ -1,0 +1,5 @@
+package it.wibs.eplastic.utils;
+
+public class StaticResourceConfiguration {
+
+}
