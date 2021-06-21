@@ -1,0 +1,75 @@
+package it.wibs.eplastic.bindcommerceIntegration.api.obj.documents;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Shipping implements Serializable{
+	
+	@JsonProperty("Carrier")
+	private String carrier;
+	
+	@JsonProperty("TrackingNumber")
+	private long trackingNumber;
+	
+	@JsonProperty("TransportedWeight")
+	private double transportedWeight;
+	
+	@JsonProperty("ShippedTime")
+	private Date shippedTime;
+
+	public String getCarrier() {
+		return carrier;
+	}
+
+	public void setCarrier(String carrier) {
+		this.carrier = carrier;
+	}
+
+	public long getTrackingNumber() {
+		return trackingNumber;
+	}
+
+	public void setTrackingNumber(long trackingNumber) {
+		this.trackingNumber = trackingNumber;
+	}
+
+	public double getTransportedWeight() {
+		return transportedWeight;
+	}
+
+	public void setTransportedWeight(double transportedWeight) {
+		this.transportedWeight = transportedWeight;
+	}
+
+	public Date getShippedTime() {
+		return shippedTime;
+	}
+
+	public void setShippedTime(Date shippedTime) {
+		this.shippedTime = shippedTime;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Shipping [carrier=");
+		builder.append(carrier);
+		builder.append(", trackingNumber=");
+		builder.append(trackingNumber);
+		builder.append(", transportedWeight=");
+		builder.append(transportedWeight);
+		builder.append(", shippedTime=");
+		builder.append(shippedTime);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
+	
+}

@@ -1,0 +1,73 @@
+package it.wibs.eplastic.bindcommerceIntegration.api.obj.documents;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class DocumentsResponse {
+	
+	@JsonProperty("Documents")
+	private List<Document> documentList;
+	
+	@JsonProperty ("errorCode")
+	private String errorCode;
+	
+	@JsonProperty ("errorDescription")
+	private String errorDescription;
+	
+	@JsonProperty ("token")
+	private String token;
+
+
+	public String getErrorCode() {
+		return errorCode;
+	}
+
+	public void setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
+	}
+
+	public String getErrorDescription() {
+		return errorDescription;
+	}
+
+	public void setErrorDescription(String errorDescription) {
+		this.errorDescription = errorDescription;
+	}
+	
+	public List<Document> getDocumentList() {
+		return documentList;
+	}
+
+	public void setDocumentList(List<Document> documentList) {
+		this.documentList = documentList;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("DocumentsResponse [documentList=");
+		builder.append(documentList.toString());
+		builder.append(", errorCode=");
+		builder.append(errorCode);
+		builder.append(", errorDescription=");
+		builder.append(errorDescription);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+
+	
+}

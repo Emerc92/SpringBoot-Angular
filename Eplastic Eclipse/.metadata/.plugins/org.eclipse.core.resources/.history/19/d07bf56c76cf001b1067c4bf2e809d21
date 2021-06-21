@@ -1,0 +1,314 @@
+package it.wibs.eplastic.entities;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import it.wibs.eplastic.bindcommerceIntegration.api.obj.documents.Category;
+import it.wibs.eplastic.bindcommerceIntegration.api.obj.documents.Customer;
+import it.wibs.eplastic.bindcommerceIntegration.api.obj.documents.ProductDimensions;
+
+@Entity
+@Table(name = "order_items")
+public class OrderItemEntity implements Serializable {
+	
+	@Id
+	@Column(name = "ITEM_CODE")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long itemCode;
+	
+	@Column(name = "ORDER_ID")
+	private long orderId;
+	
+	@Column(name ="BIND_ID")
+	private long bindId;
+	
+	@Column(name = "BARCODE")
+	private long barcode;
+	
+	@Column(name = "DESCRIPTION")
+	private String description;
+	
+	@Column(name = "QTY")
+	private int qty;
+	
+	@Column(name = "CATEGORY")
+	private String category;
+	
+	@Column(name = "PICTURE")
+	private String picture;
+	
+	@Column(name = "SUPPLIER")
+	private String supplier;
+	
+	@Column(name = "SUPPLIER_BY_REPRICING")
+	private String supplierByRepricing;
+	
+	@Column(name = "SUPPLIER_BY_REPRICING_COST")
+	private double supplierByRepricingCost;
+	
+	@Column(name = "SUPPLIER_PRICE")
+	private double supplierPrice;
+	
+	@Column(name = "MPN")
+	private int mpn;
+	
+	@Column(name = "PRICE_VAT_EXCLUDED")
+	private double priceVatExcluded;
+	
+	@Column(name = "DISCOUNTS")
+	private double discounts;
+	
+	@Column(name = "VAT_RATE")
+	private int vatRate;
+	
+	@Column(name = "TOTAL_VAT_EXCLUDED")
+	private double totalVatExcluded;
+	
+	@Column(name = "TOTAL")
+	private double total;
+	
+	@Column(name = "TOTAL_DISCOUNTED")
+	private double totalDiscount;
+	
+	@Column(name = "CURRENCY")
+	private String currency;
+	
+	@Column(name = "PARAM_NAME")
+	private String paramName;
+	
+	@Column(name = "PARAM_VALUE")
+	private String paramValue;
+
+	public long getItemCode() {
+		return itemCode;
+	}
+
+	public void setItemCode(long itemCode) {
+		this.itemCode = itemCode;
+	}
+
+	public long getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(long orderId) {
+		this.orderId = orderId;
+	}
+
+	public long getBindId() {
+		return bindId;
+	}
+
+	public void setBindId(long bindId) {
+		this.bindId = bindId;
+	}
+
+	public long getBarcode() {
+		return barcode;
+	}
+
+	public void setBarcode(long barcode) {
+		this.barcode = barcode;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getQty() {
+		return qty;
+	}
+
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public String getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(String supplier) {
+		this.supplier = supplier;
+	}
+
+	public String getSupplierByRepricing() {
+		return supplierByRepricing;
+	}
+
+	public void setSupplierByRepricing(String supplierByRepricing) {
+		this.supplierByRepricing = supplierByRepricing;
+	}
+
+	public double getSupplierByRepricingCost() {
+		return supplierByRepricingCost;
+	}
+
+	public void setSupplierByRepricingCost(double supplierByRepricingCost) {
+		this.supplierByRepricingCost = supplierByRepricingCost;
+	}
+
+	public double getSupplierPrice() {
+		return supplierPrice;
+	}
+	
+	public void setSupplierPrice(double supplierPrice) {
+		this.supplierPrice = supplierPrice;
+	}
+
+	public int getMpn() {
+		return mpn;
+	}
+
+	public void setMpn(int mpn) {
+		this.mpn = mpn;
+	}
+
+	public double getPriceVatExcluded() {
+		return priceVatExcluded;
+	}
+
+	public void setPriceVatExcluded(double priceVatExcluded) {
+		this.priceVatExcluded = priceVatExcluded;
+	}
+
+	public double getDiscounts() {
+		return discounts;
+	}
+
+	public void setDiscounts(double discounts) {
+		this.discounts = discounts;
+	}
+
+	public int getVatRate() {
+		return vatRate;
+	}
+
+	public void setVatRate(int vatRate) {
+		this.vatRate = vatRate;
+	}
+
+	public double getTotalVatExcluded() {
+		return totalVatExcluded;
+	}
+
+	public void setTotalVatExcluded(double totalVatExcluded) {
+		this.totalVatExcluded = totalVatExcluded;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
+	public double getTotalDiscount() {
+		return totalDiscount;
+	}
+
+	public void setTotalDiscount(double totalDiscount) {
+		this.totalDiscount = totalDiscount;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public String getParamName() {
+		return paramName;
+	}
+
+	public void setParamName(String paramName) {
+		this.paramName = paramName;
+	}
+
+	public String getParamValue() {
+		return paramValue;
+	}
+
+	public void setParamValue(String paramValue) {
+		this.paramValue = paramValue;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("OrderItemEntity [itemCode=");
+		builder.append(itemCode);
+		builder.append(", orderId=");
+		builder.append(orderId);
+		builder.append(", bindId=");
+		builder.append(bindId);
+		builder.append(", barcode=");
+		builder.append(barcode);
+		builder.append(", description=");
+		builder.append(description);
+		builder.append(", qty=");
+		builder.append(qty);
+		builder.append(", category=");
+		builder.append(category);
+		builder.append(", picture=");
+		builder.append(picture);
+		builder.append(", supplier=");
+		builder.append(supplier);
+		builder.append(", supplierByRepricing=");
+		builder.append(supplierByRepricing);
+		builder.append(", supplierByRepricingCost=");
+		builder.append(supplierByRepricingCost);
+		builder.append(", supplierPrice=");
+		builder.append(supplierPrice);
+		builder.append(", mpn=");
+		builder.append(mpn);
+		builder.append(", priceVatExcluded=");
+		builder.append(priceVatExcluded);
+		builder.append(", discounts=");
+		builder.append(discounts);
+		builder.append(", vatRate=");
+		builder.append(vatRate);
+		builder.append(", totalVatExcluded=");
+		builder.append(totalVatExcluded);
+		builder.append(", total=");
+		builder.append(total);
+		builder.append(", totalDiscount=");
+		builder.append(totalDiscount);
+		builder.append(", currency=");
+		builder.append(currency);
+		builder.append(", paramName=");
+		builder.append(paramName);
+		builder.append(", paramValue=");
+		builder.append(paramValue);
+		builder.append("]");
+		return builder.toString();
+	}
+}
