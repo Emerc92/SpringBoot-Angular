@@ -83,11 +83,11 @@ public class UserAdmin implements UserDetails {
 		return true;
 	}
 
-	public final String getName() {
+	public String getName() {
 		return name;
 	}
 
-	public final void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	

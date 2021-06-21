@@ -32,17 +32,17 @@ public class JWTProvider {
 		return Jwts.builder().setSubject(userAdmin.getUsername())
 				.setIssuedAt(new Date())
 				.setExpiration(new Date(new Date().getTime() + expiration * 1000))
-				.signWith(SignatureAlgorithm.HS256, secret.getBytes())
+				.signWith(SignatureAlgorithm.HS512, secret)
 				.compact();
 	}
 	
 	public String getUserNameFromToken(String token) {
-		return Jwts.parser().setSigningKey(secret.getBytes()).parseClaimsJws(token).getBody().getSubject();
+		return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
 	}
 	
 	public boolean validateToken(String token) {
 		try {
-			Jwts.parser().setSigningKey(secret.getBytes()).parseClaimsJws(token);
+			Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
 			return true;
 		}catch(MalformedJwtException e){
 			LOGGER.error("Bad format Token");

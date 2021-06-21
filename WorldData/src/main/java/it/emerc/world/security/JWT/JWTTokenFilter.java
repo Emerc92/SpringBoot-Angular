@@ -38,13 +38,13 @@ public class JWTTokenFilter extends OncePerRequestFilter{
 				SecurityContextHolder.getContext().setAuthentication(auth);
 			}
 		}catch(Exception e) {
-			LOGGER.error("fail getting doFilter" + e.getMessage());
+			LOGGER.error("fail in method doFilter" + e.getMessage());
 		}
 		filterChain.doFilter(req, res);
 	}
 
 	private String getToken(HttpServletRequest request) {
-		LOGGER.debug("debug request" + request);
+		LOGGER.info("debug request" + request);
 		String header = request.getHeader("Authorization");
 		if(header != null && header.startsWith("Bearer")) {
 			return header.replace("Bearer ", "");
