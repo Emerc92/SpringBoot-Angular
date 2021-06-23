@@ -1,17 +1,18 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.VersionCommand = void 0;
 /**
  * @license
- * Copyright Google Inc. All Rights Reserved.
+ * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.VersionCommand = void 0;
+const child_process_1 = require("child_process");
 const path = require("path");
 const command_1 = require("../models/command");
 const color_1 = require("../utilities/color");
-const json_file_1 = require("../utilities/json-file");
+const package_manager_1 = require("../utilities/package-manager");
 class VersionCommand extends command_1.Command {
     async run() {
         const cliPackage = require('../package.json');
@@ -19,7 +20,7 @@ class VersionCommand extends command_1.Command {
         try {
             workspacePackage = require(path.resolve(this.context.root, 'package.json'));
         }
-        catch (_a) { }
+        catch { }
         const patterns = [
             /^@angular\/.*/,
             /^@angular-devkit\/.*/,
@@ -39,7 +40,7 @@ class VersionCommand extends command_1.Command {
             ...Object.keys((workspacePackage === null || workspacePackage === void 0 ? void 0 : workspacePackage.devDependencies) || {}),
         ];
         const versions = packageNames
-            .filter(x => patterns.some(p => p.test(x)))
+            .filter((x) => patterns.some((p) => p.test(x)))
             .reduce((acc, name) => {
             if (name in acc) {
                 return acc;
@@ -75,12 +76,13 @@ class VersionCommand extends command_1.Command {
                 |___/
     `
             .split('\n')
-            .map(x => color_1.colors.red(x))
+            .map((x) => color_1.colors.red(x))
             .join('\n');
         this.logger.info(asciiArt);
         this.logger.info(`
       Angular CLI: ${ngCliVersion}
       Node: ${process.versions.node}
+      Package Manager: ${await this.getPackageManager()}
       OS: ${process.platform} ${process.arch}
 
       Angular: ${angularCoreVersion}
@@ -100,12 +102,11 @@ class VersionCommand extends command_1.Command {
             return acc;
         }, [])
             .join('\n... ')}
-      Ivy Workspace: ${workspacePackage ? this.getIvyWorkspace() : ''}
 
       Package${namePad.slice(7)}Version
       -------${namePad.replace(/ /g, '-')}------------------
       ${Object.keys(versions)
-            .map(module => `${module}${namePad.slice(module.length)}${versions[module]}`)
+            .map((module) => `${module}${namePad.slice(module.length)}${versions[module]}`)
             .sort()
             .join('\n')}
     `.replace(/^ {6}/gm, ''));
@@ -117,14 +118,14 @@ class VersionCommand extends command_1.Command {
         try {
             packagePath = require.resolve(`${moduleName}/package.json`, { paths: [this.context.root] });
         }
-        catch (_a) { }
+        catch { }
         // If not found, try to find within the CLI
         if (!packagePath) {
             try {
                 packagePath = require.resolve(`${moduleName}/package.json`);
                 cliOnly = true;
             }
-            catch (_b) { }
+            catch { }
         }
         let version;
         // If found, attempt to get the version
@@ -132,18 +133,17 @@ class VersionCommand extends command_1.Command {
             try {
                 version = require(packagePath).version + (cliOnly ? ' (cli-only)' : '');
             }
-            catch (_c) { }
+            catch { }
         }
         return version || '<error>';
     }
-    getIvyWorkspace() {
+    async getPackageManager() {
         try {
-            const json = new json_file_1.JSONFile(path.resolve(this.context.root, 'tsconfig.json'));
-            return json.get(['angularCompilerOptions', 'enableIvy']) === false
-                ? 'No'
-                : 'Yes';
+            const manager = await package_manager_1.getPackageManager(this.context.root);
+            const version = child_process_1.execSync(`${manager} --version`, { encoding: 'utf8', stdio: 'pipe' }).trim();
+            return `${manager} ${version}`;
         }
-        catch (_a) {
+        catch {
             return '<error>';
         }
     }

@@ -1,26 +1,24 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @license
- * Copyright Google Inc. All Rights Reserved.
+ * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 require("symbol-observable");
 // symbol polyfill must go first
-// tslint:disable-next-line:ordered-imports import-groups
 const fs = require("fs");
 const path = require("path");
 const semver_1 = require("semver");
-const stream_1 = require("stream");
 const color_1 = require("../utilities/color");
 const config_1 = require("../utilities/config");
 // Check if we need to profile this CLI run.
 if (process.env['NG_CLI_PROFILING']) {
     let profiler;
     try {
-        profiler = require('v8-profiler-node8'); // tslint:disable-line:no-implicit-dependencies
+        profiler = require('v8-profiler-node8'); // eslint-disable-line import/no-extraneous-dependencies
     }
     catch (err) {
         throw new Error(`Could not require 'v8-profiler-node8'. You must install it separetely with ` +
@@ -75,7 +73,7 @@ if (process.env['NG_CLI_PROFILING']) {
                     .version;
             }
             catch (error) {
-                // tslint:disable-next-line no-console
+                // eslint-disable-next-line  no-console
                 console.error('Version mismatch check skipped. Unable to retrieve local version: ' + error);
             }
         }
@@ -84,7 +82,7 @@ if (process.env['NG_CLI_PROFILING']) {
             isGlobalGreater = !!localVersion && globalVersion.compare(localVersion) > 0;
         }
         catch (error) {
-            // tslint:disable-next-line no-console
+            // eslint-disable-next-line  no-console
             console.error('Version mismatch check skipped. Unable to compare local version: ' + error);
         }
         if (isGlobalGreater) {
@@ -98,12 +96,12 @@ if (process.env['NG_CLI_PROFILING']) {
                 const warning = `Your global Angular CLI version (${globalVersion}) is greater than your local ` +
                     `version (${localVersion}). The local Angular CLI version is used.\n\n` +
                     'To disable this warning use "ng config -g cli.warnings.versionMismatch false".';
-                // tslint:disable-next-line no-console
+                // eslint-disable-next-line  no-console
                 console.error(color_1.colors.yellow(warning));
             }
         }
     }
-    catch (_b) {
+    catch {
         // If there is an error, resolve could not find the ng-cli
         // library from a package.json. Instead, include it from a relative
         // path to this script file (which is likely a globally installed
@@ -114,26 +112,19 @@ if (process.env['NG_CLI_PROFILING']) {
         cli = cli['default'];
     }
     return cli;
-})().then(cli => {
-    // This is required to support 1.x local versions with a 6+ global
-    let standardInput;
-    try {
-        standardInput = process.stdin;
-    }
-    catch (e) {
-        process.stdin = new stream_1.Duplex();
-        standardInput = process.stdin;
-    }
+})()
+    .then((cli) => {
     return cli({
         cliArgs: process.argv.slice(2),
-        inputStream: standardInput,
+        inputStream: process.stdin,
         outputStream: process.stdout,
     });
-}).then((exitCode) => {
+})
+    .then((exitCode) => {
     process.exit(exitCode);
 })
     .catch((err) => {
-    // tslint:disable-next-line no-console
+    // eslint-disable-next-line  no-console
     console.error('Unknown error: ' + err.toString());
     process.exit(127);
 });

@@ -1,13 +1,13 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.runCommand = void 0;
 /**
  * @license
- * Copyright Google Inc. All Rights Reserved.
+ * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.runCommand = void 0;
 const core_1 = require("@angular-devkit/core");
 const fs_1 = require("fs");
 const path_1 = require("path");
@@ -87,7 +87,9 @@ async function loadCommandDescription(name, path, registry) {
  * @param commands The map of supported commands.
  * @param options Additional options.
  */
-async function runCommand(args, logger, workspace, commands = standardCommands, options = { currentDirectory: process.cwd() }) {
+async function runCommand(args, logger, workspace, commands = standardCommands, options = {
+    currentDirectory: process.cwd(),
+}) {
     var _a;
     // This registry is exclusively used for flattening schemas, and not for validating.
     const registry = new core_1.schema.CoreSchemaRegistry([]);
@@ -151,7 +153,7 @@ async function runCommand(args, logger, workspace, commands = standardCommands, 
         for (const name of commandNames) {
             const aliasDesc = await loadCommandDescription(name, commands[name], registry);
             const aliases = aliasDesc.aliases;
-            if (aliases && aliases.some(alias => alias === commandName)) {
+            if (aliases && aliases.some((alias) => alias === commandName)) {
                 commandName = name;
                 description = aliasDesc;
                 break;
@@ -187,8 +189,7 @@ async function runCommand(args, logger, workspace, commands = standardCommands, 
             }
             return map;
         });
-        const analytics = options.analytics ||
-            (await _createAnalytics(!!workspace, description.name === 'update'));
+        const analytics = options.analytics || (await _createAnalytics(!!workspace, description.name === 'update'));
         const context = {
             workspace,
             analytics,
@@ -198,11 +199,12 @@ async function runCommand(args, logger, workspace, commands = standardCommands, 
         const command = new description.impl(context, description, logger);
         // Flush on an interval (if the event loop is waiting).
         let analyticsFlushPromise = Promise.resolve();
-        setInterval(() => {
+        const analyticsFlushInterval = setInterval(() => {
             analyticsFlushPromise = analyticsFlushPromise.then(() => analytics.flush());
         }, 1000);
         const result = await command.validateAndRun(parsedOptions);
         // Flush one last time.
+        clearInterval(analyticsFlushInterval);
         await analyticsFlushPromise.then(() => analytics.flush());
         return result;
     }
