@@ -7,10 +7,20 @@ import { City } from '../Models/city';
   providedIn: 'root'
 })
 export class cityService {
-
+    citiesUrl: 'http://localhost:8080/city/';
   constructor(private httpClient: HttpClient) { }
 
-  getCityList(): Observable<City[]>{
-    return this.httpClient.get<City[]>("http://localhost:8080/city/list");
+  public getCityList(): Observable<City[]>{
+    return this.httpClient.get<City[]>(this.citiesUrl + 'listOfCities');
   }
-}
+
+  public getCityDetail(id: number): Observable<City[]>{
+    return this.httpClient.get<City[]>(this.citiesUrl + 'detail/${id}');
+  }
+
+  public getCityName(name: string): Observable<City[]>{
+    return this.httpClient.get<City[]>(this.citiesUrl + 'detailname/${name}');
+  }
+
+  }
+

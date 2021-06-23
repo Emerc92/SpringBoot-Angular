@@ -1,13 +1,13 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.isWarningEnabled = exports.getSchematicDefaults = exports.migrateLegacyGlobalConfig = exports.getConfiguredPackageManager = exports.getProjectByCwd = exports.validateWorkspace = exports.getWorkspaceRaw = exports.createGlobalSettings = exports.getWorkspace = exports.AngularWorkspace = exports.workspaceSchemaPath = void 0;
 /**
  * @license
- * Copyright Google Inc. All Rights Reserved.
+ * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isWarningEnabled = exports.getSchematicDefaults = exports.migrateLegacyGlobalConfig = exports.getConfiguredPackageManager = exports.getProjectByCwd = exports.validateWorkspace = exports.getWorkspaceRaw = exports.createGlobalSettings = exports.getWorkspace = exports.AngularWorkspace = exports.workspaceSchemaPath = void 0;
 const core_1 = require("@angular-devkit/core");
 const fs_1 = require("fs");
 const os = require("os");
@@ -29,7 +29,7 @@ function createWorkspaceHost() {
             try {
                 return fs_1.statSync(path).isDirectory();
             }
-            catch (_a) {
+            catch {
                 return false;
             }
         },
@@ -37,7 +37,7 @@ function createWorkspaceHost() {
             try {
                 return fs_1.statSync(path).isFile();
             }
-            catch (_a) {
+            catch {
                 return false;
             }
         },
@@ -51,8 +51,16 @@ const configNames = ['angular.json', '.angular.json'];
 const globalFileName = '.angular-config.json';
 function xdgConfigHome(home, configFile) {
     // https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+    const xdgConfigHome = process.env['XDG_CONFIG_HOME'] || path.join(home, '.config');
+    const xdgAngularHome = path.join(xdgConfigHome, 'angular');
+    return configFile ? path.join(xdgAngularHome, configFile) : xdgAngularHome;
+}
+function xdgConfigHomeOld(home) {
+    // Check the configuration files in the old location that should be:
+    // - $XDG_CONFIG_HOME/.angular-config.json (if XDG_CONFIG_HOME is set)
+    // - $HOME/.config/angular/.angular-config.json (otherwise)
     const p = process.env['XDG_CONFIG_HOME'] || path.join(home, '.config', 'angular');
-    return configFile ? path.join(p, configFile) : p;
+    return path.join(p, '.angular-config.json');
 }
 function projectFilePath(projectPath) {
     // Find the configuration, either where specified, in the Angular CLI project
@@ -70,9 +78,18 @@ function globalFilePath() {
     // note that createGlobalSettings() will continue creating
     // global file in home directory, with this user will have
     // choice to move change its location to meet XDG convention
-    const xdgConfig = xdgConfigHome(home, globalFileName);
+    const xdgConfig = xdgConfigHome(home, 'config.json');
     if (fs_1.existsSync(xdgConfig)) {
         return xdgConfig;
+    }
+    // NOTE: This check is for the old configuration location, for more
+    // information see https://github.com/angular/angular-cli/pull/20556
+    const xdgConfigOld = xdgConfigHomeOld(home);
+    if (fs_1.existsSync(xdgConfigOld)) {
+        /* eslint-disable no-console */
+        console.warn(`Old configuration location detected: ${xdgConfigOld}\n` +
+            `Please move the file to the new location ~/.config/angular/config.json`);
+        return xdgConfigOld;
     }
     const p = path.join(home, globalFileName);
     if (fs_1.existsSync(p)) {
@@ -93,11 +110,11 @@ class AngularWorkspace {
         return this.workspace.projects;
     }
     // Temporary helper functions to support refactoring
-    // tslint:disable-next-line: no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     getCli() {
         return this.workspace.extensions['cli'] || {};
     }
-    // tslint:disable-next-line: no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     getProjectCli(projectName) {
         const project = this.workspace.projects.get(projectName);
         return (project === null || project === void 0 ? void 0 : project.extensions['cli']) || {};

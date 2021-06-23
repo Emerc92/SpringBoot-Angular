@@ -1,4 +1,9 @@
-<div class="bootstrap-wraper">
+
+<div *ngIf = "isLogged; else loggedOut">
+  <h2>TI SEI GIà LOGGATO!!</h2>
+</div>
+<ng-template #loggedOut>
+<div class="bootstrap-wraper" >
   <div class="container mt">
     <div class="row">
       <div class="col-md-6 offset-md-3">
@@ -41,4 +46,5 @@
     </div>
   </div>
 </div>
+</ng-template>
 <!--<mat-spinner></mat-spinner>-->

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/Models/login';
 import { AuthService } from 'src/app/Services/auth.service';
-import {  LoginServiceService } from 'src/app/Services/login.service';
 import { TokenService } from 'src/app/Services/token.service';
 
 
@@ -12,7 +11,7 @@ import { TokenService } from 'src/app/Services/token.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    default = 'eplastic';
+    default = 'World';
     hide = true;
     isLogged = false;
     isLoginFail = false;
@@ -20,12 +19,12 @@ export class LoginComponent implements OnInit {
     username: string;
     password: string;
     roles: string[] = [];
+    errMsg: string;
 
   constructor(
     private tokenService: TokenService,
     private authService: AuthService,
     private router: Router,
-    private loginService: LoginServiceService
     ) { }
 
 
@@ -38,7 +37,23 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void{
+    this.loginUser = new Login(this.username,this.password);
+    this.authService.login(this.loginUser).subscribe(
+      data => {
+        this.isLogged = true;
+        this.isLoginFail = false;
 
+        this.tokenService.setToken(data.token );
+        this.tokenService.setUsername(data.username);
+        this.tokenService.setAuthorities(data.authorities.toString());
+      }, 
+      err => {
+        this.isLogged = false;
+        this.isLoginFail = true;
+        this.errMsg = err.error.message;
+        console.log(this.errMsg);
+      }
+    )
   }
 
 }

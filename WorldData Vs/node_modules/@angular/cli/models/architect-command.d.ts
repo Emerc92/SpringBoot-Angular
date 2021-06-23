@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright Google Inc. All Rights Reserved.
+ * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
@@ -24,9 +24,9 @@ export declare abstract class ArchitectCommand<T extends ArchitectCommandOptions
     protected multiTarget: boolean;
     target: string | undefined;
     missingTargetError: string | undefined;
-    initialize(options: T & Arguments): Promise<void>;
+    initialize(options: T & Arguments): Promise<number | void>;
     run(options: ArchitectCommandOptions & Arguments): Promise<number>;
-    protected runSingleTarget(target: Target, targetOptions: string[]): Promise<0 | 1>;
+    protected runSingleTarget(target: Target, targetOptions: string[]): Promise<1 | 0>;
     protected runArchitectTarget(options: ArchitectCommandOptions & Arguments): Promise<number>;
     private getProjectNamesByTarget;
     private _makeTargetSpecifier;

@@ -1,7 +1,7 @@
 "use strict";
 /**
  * @license
- * Copyright Google Inc. All Rights Reserved.
+ * Copyright Google LLC All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
@@ -11,8 +11,6 @@ exports.getProjectDependencies = exports.findPackageJson = exports.readPackageJs
 const fs = require("fs");
 const path_1 = require("path");
 const resolve = require("resolve");
-const util_1 = require("util");
-const readFile = util_1.promisify(fs.readFile);
 function getAllDependencies(pkg) {
     return new Set([
         ...Object.entries(pkg.dependencies || []),
@@ -23,9 +21,9 @@ function getAllDependencies(pkg) {
 }
 async function readPackageJson(packageJsonPath) {
     try {
-        return JSON.parse((await readFile(packageJsonPath)).toString());
+        return JSON.parse((await fs.promises.readFile(packageJsonPath)).toString());
     }
-    catch (_a) {
+    catch {
         return undefined;
     }
 }
@@ -36,7 +34,7 @@ function findPackageJson(workspaceDir, packageName) {
         const packageJsonPath = resolve.sync(`${packageName}/package.json`, { basedir: workspaceDir });
         return packageJsonPath;
     }
-    catch (_a) {
+    catch {
         return undefined;
     }
 }
