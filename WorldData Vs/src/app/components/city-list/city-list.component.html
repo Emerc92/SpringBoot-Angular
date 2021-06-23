@@ -35,10 +35,7 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header> Code </mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.code}}</mat-cell>
         </ng-container>
-        <ng-container matColumnDef="country code2">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> country code2 </mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.countryCode2}}</mat-cell>
-        </ng-container>
+      
     </mat-table>
     <mat-paginator  [pageSize]="5" [pageSizeOptions]="[5,10,20, dataSource.data.length ]" [disabled]="dataSource.data.length === 0" showFirstLastButtons> </mat-paginator><!-- -->
 </div>
