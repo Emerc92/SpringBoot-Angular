@@ -1,9 +1,11 @@
-<mat-toolbar >
-
-
-  <span><a mat-icon-button id="eplastic" routerLink = "login" >{{title}}</a></span>
- 
-<span><img class="img-fluid" style= "width: 40px;" src="/assets/mappa.png" alt="mappa"></span>
-  
-<!--commento di prova per caricare nel repo remoto-->
+<mat-toolbar>
+  <span><a mat-icon-button id="worldlogin" routerLink="login">{{title}}</a></span>
+  <span><img class="img-fluid" style="width: 40px;" src="/assets/mappa.png" alt="mappa"></span>
+  <mat-toolbar-row>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
 </mat-toolbar>
