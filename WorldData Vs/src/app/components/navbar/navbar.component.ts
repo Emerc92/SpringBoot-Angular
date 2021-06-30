@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from 'src/app/Services/token.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-    title = "World"
-  constructor() { }
+  title = "World"
+  isLogged = false;
+  constructor(private tokenService: TokenService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    if (this.tokenService.getToken) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
   }
-
+onLogout(): void{
+  this.tokenService.logOut();
+  window.location.reload();
+}
 }

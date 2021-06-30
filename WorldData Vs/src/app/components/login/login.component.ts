@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/Models/login';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -11,6 +12,7 @@ import { TokenService } from 'src/app/Services/token.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  form: FormGroup;
   default = 'World';
   hide = true;
   isLogged = false;
@@ -22,10 +24,16 @@ export class LoginComponent implements OnInit {
   errMsg: string;
 
   constructor(
+    private fb: FormBuilder,
     private tokenService: TokenService,
     private authService: AuthService,
     private router: Router,
-  ) { }
+  ) {
+    this.form = this.fb.group({
+      user: ['', Validators.required],
+      pass: ['', Validators.required]
+    });
+  }
 
 
   ngOnInit(): void {
@@ -44,7 +52,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFail = false;
         this.tokenService.setToken(data.token);
         this.tokenService.setUsername(data.username);
-        this.tokenService.setAuthorities(data.authorities.toString());
+        this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
         this.router.navigate(['/']);
       },

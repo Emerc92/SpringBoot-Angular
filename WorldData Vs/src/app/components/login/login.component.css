@@ -1,13 +1,16 @@
   
-  input.example-right-align::-webkit-outer-spin-button,
-  input.example-right-align::-webkit-inner-spin-button {
-    display: none;
-  }
-  
-  input.example-right-align {
-    -moz-appearance: textfield;
-  }
-
 .full-width{
+  width: 80%;
+}
+.body{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  background-color: aliceblue;
+}
+.login {
   width: 100%;
+  max-width: 330px;
+  text-align: center;
 }

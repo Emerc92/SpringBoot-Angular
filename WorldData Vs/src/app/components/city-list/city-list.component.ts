@@ -11,7 +11,7 @@ import { cityService } from 'src/app/Services/city.service';
 })
 
 export class CityListComponent implements OnInit, AfterViewInit {
-  tableColumns : string[] = ['id', 'name', 'countryCode', 'district', 'population', 'code', 'country code2'];
+  tableColumns : string[] = ['id', 'name', 'countryCode', 'district', 'population', 'code'];
   dataSource = new MatTableDataSource<City>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

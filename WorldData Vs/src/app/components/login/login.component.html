@@ -1,41 +1,26 @@
-<div class="text text-center" *ngIf="isLogged; else loggedOut">
-  <h2>TI SEI GIA' LOGGATO!!</h2>
-</div>
-<ng-template #loggedOut>
-  <div class="bootstrap-wraper">
-    <div class="container mt">
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div class="container text-center">
-            <img class="img-fluid" style="width: 100px;" src="/assets/login.png" alt="login image">
-            <h1 class="info text-center">Login</h1>
-          </div>
-          <!--form per login-->
-          <form #f="ngForm" (ngSubmit)="onLogin()" novalidate> 
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>User</mat-label>
-              <input matInput placeholder="username" [(ngModel)]="username" name="username" required>
-            </mat-form-field>
-            <br>
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Password</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password"
-                required autocomplete="additional-name" placeholder="password">
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-              <mat-hint>Non deve contenere spazi vuoti</mat-hint>
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-              <button color="accent" mat-raised-button type="submit" [disabled]="!f.valid" >Login</button>
-            </mat-form-field>
-          </form>
-           <div *ngIf="f.submitted && isLoginFail" class='alert alert-danger mt-3'>Login failed: {{errMsg}}</div>
-        </div>
-      </div>
-    </div>
+<app-navbar></app-navbar>
+<div class="body">
+  <div class="login">
+    <!--form per login-->
+    <form [formGroup]="form" (ngsubmit)="onLogin()">
+      <img class="img-fluid" style="width: 100px;" src="/assets/login.png" alt="login image">
+      <h1 class="info text-center">Login</h1>
+      <mat-form-field appearance="outline" class="fill full-width">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="username" formControlName="user" name="username" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="fill full-width">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="pass" name="password" required placeholder="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <br>
+      <button type="submit" mat-raised-button></button>
+    </form>
   </div>
-</ng-template>
+</div>
+
 <!--<mat-spinner></mat-spinner>-->

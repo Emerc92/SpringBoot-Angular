@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginServiceService {
-  url = "http:/localhost:9595";
+  url = "http:/localhost:8080";
   constructor(private service:HttpClient) { }
   
   generateToken(credentials:any){

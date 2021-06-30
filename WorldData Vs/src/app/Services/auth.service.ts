@@ -13,7 +13,7 @@ authURL = 'http://localhost:8080/auth/';
   constructor(private httpClient: HttpClient) {}
 
   public newUser(newUser: NewUser): Observable<any>{
-    return this.httpClient.post<any>(this.authURL +'newUser', newUser);
+    return this.httpClient.post<any>(this.authURL +'newuser', newUser);
   }
    
   public login(login: Login): Observable<JwtDTO>{
