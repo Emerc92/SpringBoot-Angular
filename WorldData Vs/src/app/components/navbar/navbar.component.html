@@ -4,23 +4,26 @@
   </button>
   <span><img class="img-fluid" style="width: 40px;" src="/assets/mappa.png" alt="mappa"></span>
   <span>{{title}}</span>
- 
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
   <button mat-icon-button class="example-icon" aria-label="share icon-button with menu icon">
     <mat-icon>share</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" url='https://www.facebook.com/#' aria-label="share on facebook">
+  <button mat-icon-button class="example-icon" src='https://www.facebook.com' aria-label="share on facebook">
     <mat-icon>facebook</mat-icon>
   </button>
-  <button mat-icon-button *ngIf="isLogged" class="example-icon" routerLink="/cities"  aria-label="cities">
-    <mat-icon>map</mat-icon>
-  </button>
-  <button mat-icon-button *ngIf="!isLogged" class="example-icon" routerLink="/login" aria-label="login">
-    <mat-icon>login</mat-icon>
-  </button>
-  <button mat-icon-button *ngIf="isLogged" class="example-icon" aria-label="/logout"  >
-    <mat-icon (click)="onLogout()" >exit_to_app</mat-icon>
-  </button>
+  <div *ngIf="isLogged">
+    <button mat-icon-button class="example-icon" routerLink="/list" aria-label="cities">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div *ngIf="!isLogged">
+    <button mat-icon-button class="example-icon" routerLink="/login" aria-label="login">
+      <mat-icon>login</mat-icon> Login
+    </button>
+  </div>
+  <div *ngIf="isLogged">
+    <button mat-icon-button class="example-icon" aria-label="logout" (click)="onLogout()">
+      <mat-icon>logout</mat-icon>Logout
+    </button>
+  </div>
+
 </mat-toolbar>

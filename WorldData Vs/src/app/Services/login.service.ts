@@ -26,12 +26,12 @@ export class LoginServiceService {
       return true;
     }
   }
-  logout() {
-    localStorage.removeItem('token');
+  logOut() {
+    localStorage.removeItem("token");
     return true;
   }
 
   getToken() {
-    return localStorage.getItem('token');
+    return localStorage.getItem("token");
   }
 }

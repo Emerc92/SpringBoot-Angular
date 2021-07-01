@@ -1,4 +1,7 @@
 <app-navbar></app-navbar>
-<div class="container">
-    <h1>Welcome to My World</h1>
+<div class="container text-center" >
+   <div *ngIf="isLogged; else loggedOut"><h1>Welcome {{userName}}</h1><mat-icon>mood</mat-icon></div> 
+   <img src='assets/tits.gif' alt="tits" *ngIf='admin'>
+   <ng-template #loggedOut><h1>non ti sei ancora loggato</h1> <mat-icon>mood_bad</mat-icon></ng-template>
 </div>
+

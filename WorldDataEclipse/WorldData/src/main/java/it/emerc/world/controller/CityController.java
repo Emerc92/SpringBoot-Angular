@@ -17,13 +17,13 @@ import it.emerc.world.services.CityService;
 
 @RestController
 @RequestMapping("/city")
-@CrossOrigin (origins = "http://localhost:4200")
+@CrossOrigin 
 public class CityController {
 
 	@Autowired
 	CityService cityService;
 	
-	@GetMapping("/listOfCities")
+	@GetMapping("/list")
 	public ResponseEntity<List<CityEntity>> list(){
 		List<CityEntity> list =cityService.getListOfCities();
 		return new ResponseEntity(list, HttpStatus.OK);

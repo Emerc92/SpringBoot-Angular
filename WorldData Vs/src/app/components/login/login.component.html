@@ -1,25 +1,28 @@
 <app-navbar></app-navbar>
-<div class="body">
+<div class="body" #loggedOut>
   <div class="login">
-    <!--form per login-->
-    <form [formGroup]="form" (ngsubmit)="onLogin()">
-      <img class="img-fluid" style="width: 100px;" src="/assets/login.png" alt="login image">
+    <form [formGroup]="form" (ngSubmit)="onLogin()" >
+      <img class="img-fluid" width="50%" src="/assets/login.png" alt="login image">
       <h1 class="info text-center">Login</h1>
       <mat-form-field appearance="outline" class="fill full-width">
         <mat-label>Username</mat-label>
-        <input matInput placeholder="username" formControlName="user" name="username" required>
+        <input matInput autocomplete="off" placeholder="username"  required formControlName="user">
       </mat-form-field>
-      <mat-form-field appearance="outline" class="fill full-width">
+      <mat-form-field appearance="outline" class="fill full-width ">
         <mat-label>Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" formControlName="pass" name="password" required placeholder="password">
+        <input matInput autocomplete="off" [type]="hide ? 'password' : 'text'"  required
+          placeholder="password" formControlName="pass">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
       <br>
-      <button type="submit" mat-raised-button></button>
+      <button type="submit" mat-raised-button color="primary" [disabled]= "form.invalid" >
+        <mat-icon>login</mat-icon> Login
+      </button>
     </form>
+    
   </div>
 </div>
 
