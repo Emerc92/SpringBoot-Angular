@@ -5,5 +5,4 @@ export class City {
     district: string;
     population: number;
     code: number;
-    country_code2: string;
 }

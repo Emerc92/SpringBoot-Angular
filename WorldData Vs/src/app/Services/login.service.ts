@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginServiceService {
-  url = "http:/localhost:9595";
+  url = "http:/localhost:8080";
   constructor(private service:HttpClient) { }
   
   generateToken(credentials:any){
@@ -26,12 +26,12 @@ export class LoginServiceService {
       return true;
     }
   }
-  logout() {
-    localStorage.removeItem('token');
+  logOut() {
+    localStorage.removeItem("token");
     return true;
   }
 
   getToken() {
-    return localStorage.getItem('token');
+    return localStorage.getItem("token");
   }
 }

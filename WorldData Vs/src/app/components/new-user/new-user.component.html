@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="text-center" *ngIf='isLogged; else loggedOut'>
+    <h2>TI SEI GIA' LOGGATO!!</h2>
+</div>
+    <div class="container d-flex justify-content-center">
+        <div class="card">
+            
+            <form #f="ngForm" (ngSubmit)="onRegister()" novalidate> 
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Username</mat-label>
+                  <input matInput placeholder="username" [(ngModel)]="userName" name="userName" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="username" [(ngModel)]="Name" name="Name" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Surname</mat-label>
+                  <input matInput placeholder="Surname" [(ngModel)]="Surname" name="Surname" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>mail</mat-label>
+                  <input matInput placeholder="mail" [(ngModel)]="mail" name="mail" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Password</mat-label>
+                  <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password"
+                    required autocomplete="additional-name" placeholder="password">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-hint>Non deve contenere spazi vuoti</mat-hint>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                  <button color="accent" mat-raised-button type="submit" [disabled]="!f.valid" >Login</button>
+                </mat-form-field>
+              </form>
+
+        </div>
+    </div>

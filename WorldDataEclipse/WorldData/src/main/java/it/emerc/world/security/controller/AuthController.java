@@ -55,7 +55,7 @@ public class AuthController {
 	JWTProvider jwtPovider;
 	
 	
-	@PreAuthorize("hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/newuser")
 	public ResponseEntity<?> newUser(@Valid @RequestBody NewUser newUser, BindingResult bindingResult){
 

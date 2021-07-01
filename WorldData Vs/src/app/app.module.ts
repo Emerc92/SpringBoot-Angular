@@ -11,6 +11,7 @@ import { MaterialModule} from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { IndexComponent } from './components/index/index.component';
+import { NewUserComponent } from './components/new-user/new-user.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { IndexComponent } from './components/index/index.component';
     NavbarComponent,
     CityListComponent,
     IndexComponent,
+    NewUserComponent,
   ],
   imports: [
     BrowserModule,

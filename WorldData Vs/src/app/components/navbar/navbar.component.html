@@ -1,11 +1,29 @@
 <mat-toolbar>
-  <span><a mat-icon-button id="worldlogin" routerLink="login">{{title}}</a></span>
+  <button mat-icon-button class="example-icon" routerLink="/">
+    <mat-icon>home</mat-icon>
+  </button>
   <span><img class="img-fluid" style="width: 40px;" src="/assets/mappa.png" alt="mappa"></span>
-  <mat-toolbar-row>
-    <span>My App</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <span>{{title}}</span>
+  <button mat-icon-button class="example-icon" aria-label="share icon-button with menu icon">
+    <mat-icon>share</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" src='https://www.facebook.com' aria-label="share on facebook">
+    <mat-icon>facebook</mat-icon>
+  </button>
+  <div *ngIf="isLogged">
+    <button mat-icon-button class="example-icon" routerLink="/list" aria-label="cities">
       <mat-icon>menu</mat-icon>
     </button>
-  </mat-toolbar-row>
+  </div>
+  <div *ngIf="!isLogged">
+    <button mat-icon-button class="example-icon" routerLink="/login" aria-label="login">
+      <mat-icon>login</mat-icon> Login
+    </button>
+  </div>
+  <div *ngIf="isLogged">
+    <button mat-icon-button class="example-icon" aria-label="logout" (click)="onLogout()">
+      <mat-icon>logout</mat-icon>Logout
+    </button>
+  </div>
+
 </mat-toolbar>
