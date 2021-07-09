@@ -18,12 +18,12 @@ export class cityService {
     return this.httpClient.get<City[]>(this.citiesUrl + 'list');
   }
 
-  public getCityDetail(id: number): Observable<City[]>{
-    return this.httpClient.get<City[]>(this.citiesUrl + 'detail/${id}');
+  public getCityDetail(id: number): Observable<City>{
+    return this.httpClient.get<City>(this.citiesUrl + 'detail/${id}');
   }
 
-  public getCityName(name: string): Observable<City[]>{
-    return this.httpClient.get<City[]>(this.citiesUrl + 'detailname/${name}');
+  public getCityName(name: string): Observable<City>{
+    return this.httpClient.get<City>(this.citiesUrl + 'detailname/${name}');
   }
 
   }
