@@ -17,7 +17,7 @@ import it.emerc.world.services.CityService;
 
 @RestController
 @RequestMapping("/city")
-@CrossOrigin 
+@CrossOrigin ()
 public class CityController {
 
 	@Autowired

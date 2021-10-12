@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.tokenService.getToken() != null) {
-      console.log('isLogged true');
+      console.log('isLogged true (login.ts)');
       console.log('isLoginFail false');
       this.isLogged = true;
       this.isLoginFail = false;
@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
           console.log('sei il boss')
         }
         this.tokenService.setAuthorities(data.authorities);
-        console.log('data.authorities are: '+ data.authorities.toString())
+        console.log('data.authorities are: ',JSON.stringify(data.authorities[0]));
         this.roles = data.authorities;
         this.router.navigate(['/']);
       },

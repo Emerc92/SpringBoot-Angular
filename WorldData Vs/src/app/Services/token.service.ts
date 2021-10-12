@@ -23,7 +23,6 @@ export class TokenService {
 
   public setUserName(userName: string): void {
     window.sessionStorage.removeItem(USERNAME_KEY );
-  
     window.sessionStorage.setItem(USERNAME_KEY , userName);
     console.log("l'username inserito è :" + userName)
   }

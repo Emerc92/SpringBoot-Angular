@@ -1,9 +1,10 @@
-import { Component, AfterViewInit, OnInit, ViewChild} from '@angular/core';
-import { City } from 'src/app/Models/city';
-import { MatTableDataSource} from '@angular/material/table';
+import { Component, AfterViewInit, OnInit, ViewChild } from '@angular/core';
+import { City } from 'src/app/Models/City';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { cityService } from 'src/app/Services/city.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-city-list',
   templateUrl: './city-list.component.html',
@@ -11,25 +12,32 @@ import { cityService } from 'src/app/Services/city.service';
 })
 
 export class CityListComponent implements OnInit, AfterViewInit {
-  tableColumns : string[] = ['id', 'name', 'countryCode', 'district', 'population', 'code', 'continent'];
+  tableColumns: string[] = ['id', 'name', 'countryCode', 'district', 'population', 'code', 'continent'];
   dataSource = new MatTableDataSource<City>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  isLoaded = false;
 
+  constructor(
+    private service: cityService,
+    private router: Router
+    ) { }
 
-  constructor(private service : cityService){}
-  
-  ngOnInit(){
+  ngOnInit() {
     this.getCityList();
   }
-  ngAfterViewInit() { 
+  ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
 
-  private getCityList(){
+  private getCityList() {
     this.service.getCityList().subscribe(data => {
-      this.dataSource.data = data;
+      console.log("data is:", data);
+      this.dataSource.data = JSON.parse(data.toString());
+      console.log("data is:", this.dataSource.data);
+      this.isLoaded = true;
       this.dataSource.paginator = this.paginator;
+      //this.router.navigate(['/list']);
     });
   }
   //per la ricerca smart

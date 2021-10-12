@@ -30,4 +30,8 @@ export class NavbarComponent implements OnInit {
     console.log('logOut realizzato'+ this.tokenService.getToken());
   
   }
+
+  goToList(){
+    this.router.navigate(['list']);
+  }
 }
