@@ -29,6 +29,7 @@ public class JWTTokenFilter extends OncePerRequestFilter{
 	
 	@Override
 	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain) throws ServletException, IOException {
+		LOGGER.info("HttpServletRequest={}, HttpServletResponse={},  FilterChain={}",  req, res, filterChain);
 		try {
 			String token =  getToken(req);
 			if(token != null && tokenProvider.validateToken(token)) {

@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { IndexComponent } from './components/index/index.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
+import { TestComponent } from './components/test/test.component';
+import { interceptorProvider } from './interceptors/prod-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { NewUserComponent } from './components/new-user/new-user.component';
     CityListComponent,
     IndexComponent,
     NewUserComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { NewUserComponent } from './components/new-user/new-user.component';
     FlexLayoutModule
     ],
   
-  providers: [MaterialModule],
+  providers: [MaterialModule, interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

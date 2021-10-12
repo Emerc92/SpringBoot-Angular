@@ -16,20 +16,20 @@ export class IndexComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.tokenService.getToken() != null) {
-      console.log('isLogged = true');
+    if (this.tokenService.getToken()) {
       this.isLogged = true;
+      console.log('index component: isLogged= ', this.isLogged);
       this.userName = this.tokenService.getUserName();
       if (this.userName === 'emilianoAdmin') {
         this.admin = true;
       }
     } else {
-      console.log('isLogged = false');
+      console.log('index component: isLogged= ', this.isLogged);
       this.isLogged = false;
       this.userName = '';
     }
   }
- 
+
 
 
 }

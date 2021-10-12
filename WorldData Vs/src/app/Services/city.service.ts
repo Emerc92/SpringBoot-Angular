@@ -1,20 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { City } from '../Models/city';
+import { City } from '../Models/City';
 import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class cityService {
-    citiesUrl: 'http://localhost:8080/city/';
+    citiesUrl= 'http://localhost:8080/city/';
+   
   constructor(
     private httpClient: HttpClient,
     private tokenService: TokenService) { }
 
   public getCityList(): Observable<City[]>{
-    this.httpClient.head( this.tokenService.getToken());
+    this.httpClient.head(this.tokenService.getToken());
+    
+    console.log("httpclient details: ", this.httpClient, this.tokenService.getToken());
     return this.httpClient.get<City[]>(this.citiesUrl + 'list');
   }
 

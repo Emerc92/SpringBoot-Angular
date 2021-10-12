@@ -45,15 +45,15 @@ public class JWTProvider {
 			Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
 			return true;
 		}catch(MalformedJwtException e){
-			LOGGER.error("Bad format Token");
+			LOGGER.error("Bad format Token, token={}, error={}", token, e);
 		}catch(UnsupportedJwtException e){
-			LOGGER.error("Not supported Token");
+			LOGGER.error("Not supported Token, token={}", token, e);
 		}catch(ExpiredJwtException e){
-			LOGGER.error("Expired Token");
+			LOGGER.error("Expired Token, token={}", token, e);
 		}catch(IllegalArgumentException e){
-			LOGGER.error("Empty Token");
+			LOGGER.error("Empty Token, token={}", token, e);
 		}catch(SignatureException e){
-			LOGGER.error("fail firm");
+			LOGGER.error("fail firm, token={}", token, e);
 		}
 		return false;
 	}
