@@ -23,7 +23,6 @@ public class Role {
 	private RolName roleName;
 	
 	public Role() {
-		
 	}
 
 	public Role(@NotNull RolName roleName) {

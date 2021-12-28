@@ -1,10 +1,10 @@
 import { Component, AfterViewInit, OnInit, ViewChild } from '@angular/core';
-import { City } from 'src/app/Models/City';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { cityService } from 'src/app/Services/city.service';
 import { Router } from '@angular/router';
+import { City } from 'src/app/Models/City';
 @Component({
   selector: 'app-city-list',
   templateUrl: './city-list.component.html',
@@ -25,19 +25,21 @@ export class CityListComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getCityList();
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
   ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
   private getCityList() {
     this.service.getCityList().subscribe(data => {
       console.log("data is:", data);
-      this.dataSource.data = JSON.parse(data.toString());
-      console.log("data is:", this.dataSource.data);
+      this.dataSource.data = data;
       this.isLoaded = true;
       this.dataSource.paginator = this.paginator;
-      //this.router.navigate(['/list']);
+      this.router.navigate(['/list']);
     });
   }
   //per la ricerca smart

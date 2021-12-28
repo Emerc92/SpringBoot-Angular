@@ -54,6 +54,8 @@ public class JWTProvider {
 			LOGGER.error("Empty Token, token={}", token, e);
 		}catch(SignatureException e){
 			LOGGER.error("fail firm, token={}", token, e);
+		}catch(Exception e) {
+			LOGGER.error("ERROR", token, e);
 		}
 		return false;
 	}

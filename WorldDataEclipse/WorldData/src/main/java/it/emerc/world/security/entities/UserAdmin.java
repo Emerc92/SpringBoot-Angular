@@ -39,7 +39,6 @@ public class UserAdmin implements UserDetails {
 
 	public UserAdmin(String name, String userName, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
-		super();
 		this.name = name;
 		this.userName = userName;
 		this.email = email;

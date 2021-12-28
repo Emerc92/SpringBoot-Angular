@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TokenService {
-  username:string;
+  userName:string;
   roles: Array<string> = [];
   constructor() { }
 
@@ -30,7 +30,7 @@ export class TokenService {
   public getUserName(): string {
     if(sessionStorage.getItem(USERNAME_KEY) != null){
 
-      this.username = USERNAME_KEY;
+      this.userName = USERNAME_KEY;
     }
     return sessionStorage.getItem(USERNAME_KEY) ;
   }
@@ -39,6 +39,7 @@ export class TokenService {
   public setAuthorities(authorities: string[]): void {
     window.sessionStorage.removeItem(AUTHORITIES_KEY);
     window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
+    console.log("authorities :", authorities);
   }
 
   public getAuthorities(): string[] {
@@ -46,6 +47,7 @@ export class TokenService {
     if (sessionStorage.getItem(AUTHORITIES_KEY)) {
        JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach(authority =>{
          this.roles.push(authority.authority);
+         console.log("role :" , this.roles);
        });
     }
     return this.roles;

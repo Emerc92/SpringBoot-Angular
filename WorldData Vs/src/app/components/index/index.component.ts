@@ -16,6 +16,9 @@ export class IndexComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log("index token: ", this.tokenService.getToken());
+    
+
     if (this.tokenService.getToken()) {
       this.isLogged = true;
       console.log('index component: isLogged= ', this.isLogged);

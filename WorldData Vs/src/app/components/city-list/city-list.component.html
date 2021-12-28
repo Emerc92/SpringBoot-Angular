@@ -7,7 +7,8 @@
         </mat-form-field>
       </div>
     <h2>Cities List</h2>
-    <mat-table [dataSource]=" dataSource" matSort class="mat-elevation-z8">
+    <div class="mat-elevation-z8">
+    <mat-table [dataSource]=" dataSource" matSort >
        
         <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
@@ -42,5 +43,6 @@
         </ng-container>
       
     </mat-table>
-    <mat-paginator  [pageSize]="5" [pageSizeOptions]="[5,10,20, dataSource.data.length ]" [disabled]="dataSource.data.length === 0" showFirstLastButtons> </mat-paginator><!-- -->
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5,10,20, dataSource.data.length]" [disabled]="dataSource.data.length === 0" showFirstLastButtons> </mat-paginator><!-- -->
+</div>
 </div>
