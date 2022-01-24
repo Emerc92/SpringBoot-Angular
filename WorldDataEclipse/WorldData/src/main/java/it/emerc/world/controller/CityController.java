@@ -18,6 +18,7 @@ import it.emerc.world.services.CityService;
 @RestController
 @RequestMapping("/city")
 @CrossOrigin ()
+@SuppressWarnings({"unchecked","rawtypes"})
 public class CityController {
 
 	@Autowired
