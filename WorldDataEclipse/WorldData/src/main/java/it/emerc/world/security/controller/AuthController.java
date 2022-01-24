@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -37,6 +36,7 @@ import it.emerc.world.security.services.UserService;
 @RestController
 @RequestMapping("/auth")
 @CrossOrigin
+@SuppressWarnings({"unchecked","rawtypes"})
 public class AuthController {
 
 	@Autowired
@@ -56,6 +56,8 @@ public class AuthController {
 	
 	
 	//@PreAuthorize("hasRole('ADMIN')")
+
+
 	@PostMapping("/newuser")
 	public ResponseEntity<?> newUser(@Valid @RequestBody NewUser newUser, BindingResult bindingResult){
 

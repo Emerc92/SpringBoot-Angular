@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "city")
 public class CityEntity implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name ="ID")
@@ -69,7 +70,7 @@ public class CityEntity implements Serializable{
 	}
 
 	public void setPopulation(long population) {
-		population = population;
+		this.population = population;
 	}
 
 	public String getCode() {
